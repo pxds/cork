@@ -24,7 +24,9 @@ HowTo: Build Cork
 	4. The output will be found at *MPIR main folder*/dll/(Configuration)/(Architecture), i.e. mpir-2.7.2\dll\Win32\Debug
 
 > Building Cork
-	1. Download the master branch from https://github.com/gilbo/cork
+	1. Download the master branch from https://github.com/pxds/cork
 	2. Open VS solution at cork-master/win/wincork/wincork.sln
 	3. Copy mpir.h and mpirxx.h to cork-master/src/util
-	4. Copy mpir.lib to cork-master/win/wincork
+	4. Change Linker paths in the Project Configurations to "*mpirdirectory*\dll\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)""
+	5. Change Post Build Events to "xcopy /y *mpirdirectory*\dll\$(Platform)\$(Configuration) $(OutDir)""
+	6. Build it and run. Debug mode has some arguments already set up, you can change them on Project Configurations > Debugging > Command Arguments.
