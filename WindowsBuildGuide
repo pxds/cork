@@ -1,0 +1,30 @@
+HowTo: Build Cork
+
+> MPIR math library (instructions from session 2.4 @ http://www.mpir.org/mpir-2.7.2.pdf)
+	1. Download latest MPIR from http://mpir.org/
+	2. Unpack to a folder
+	3. You'll find Visual Studio solutions inside the folder mpir/build.vc**/mpir.sln
+	  - OBS: MPIR can be built with the professional and higher versions of Microsoft Visual Studio 2010, 2012 and 2013.
+	4. To build MPIR, you'll need Python 3 and the Yasm assembler
+
+>> Python 3
+	1. Download Pytoh 3.x.x from https://www.python.org/downloads/
+	2. Run python-3.x.x.exe file and install checking the box "Add Python 3.X to PATH"
+	ALERT: Python 3.5.1 has some issues with windows 8.1 and later, beware.
+	- Sugestion: Download pytoh-3.4.4 Windows x86-64 MSI Installer
+
+>> YASM assembler
+	1. Download YASM for use with VS2010+ from http://yasm.tortall.net/Download.html
+	2. Open the .zip and copy vsyasm.exe to C:\Program Files (x86)\Microsoft Visual Studio 1*.0\VC\bin
+
+> Building MPIR
+	1. Open mpir/build.vc**/mpir.sln according to your Visual Studio version (VS2013 is vc12, yay microsoft...)
+	2. Set 'dll_mpir_gc' as the Startup Project and select the build configuration (Debug/Release x86/x64)
+	3. Build the project
+	4. The output will be found at *MPIR main folder*/dll/(Configuration)/(Architecture), i.e. mpir-2.7.2\dll\Win32\Debug
+
+> Building Cork
+	1. Download the master branch from https://github.com/gilbo/cork
+	2. Open VS solution at cork-master/win/wincork/wincork.sln
+	3. Copy mpir.h and mpirxx.h to cork-master/src/util
+	4. Copy mpir.lib to cork-master/win/wincork
